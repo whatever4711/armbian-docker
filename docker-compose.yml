@@ -1,0 +1,10 @@
+version: '2'
+
+services:
+  armbian:
+    build:
+      context: .
+      dockerfile: Dockerfile-Armbian
+    volumes:
+      - ./debs/:/armbian/output/debs/
+    command: BRANCH=next BOARD=lamobo-r1 KERNEL_ONLY=no KERNEL_CONFIGURE=yes BUILD_DESKTOP=no RELEASE=jessie

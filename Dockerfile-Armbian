@@ -1,4 +1,6 @@
 FROM debian:sid
+MAINTAINER Marcel Grossmann <whatever4711@gmail.com>
+
 RUN apt-get update && apt-get install -y \
   git \
   ntpdate \
@@ -81,3 +83,11 @@ RUN apt-get update && apt-get install -y \
   whiptail \
   zip \
   zlib1g-dev
+
+ENV ARMBIAN=/armbian
+RUN mkdir $ARMBIAN && \
+    cd $ARMBIAN && \
+    git clone https://github.com/igorpecovnik/lib --depth 1 && cp lib/compile.sh .
+WORKDIR $ARMBIAN
+
+ENTRYPOITN [ "/armbian/compile.sh" ]
