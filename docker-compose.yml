@@ -5,6 +5,7 @@ services:
     build:
       context: .
       dockerfile: Dockerfile-Armbian
-    volumes:
-      - ./debs/:/armbian/output/debs/
-    command: BRANCH=next BOARD=lamobo-r1 KERNEL_ONLY=no KERNEL_CONFIGURE=yes BUILD_DESKTOP=no RELEASE=jessie
+    privileged: true
+    #volumes:
+      #      - ./debs/:/armbian/output/debs/
+      #command: BRANCH=next BOARD=lamobo-r1 KERNEL_ONLY=no KERNEL_CONFIGURE=yes BUILD_DESKTOP=no RELEASE=jessie
